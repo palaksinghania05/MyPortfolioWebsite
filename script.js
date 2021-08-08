@@ -32,6 +32,17 @@ $(document).ready(function(){
         $('.navbar .menu').toggleClass("active");
         $('.menu-btn i').toggleClass("active");
     });
+    
+    var form = document.getElementById('contact-form');
+    form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("contact-form")),
+    }).then(response => response.json()).then((html) => {
+        window.location = "index.html"
+    });
+});
 
     // typing text animation script
     var typed = new Typed(".typing", {
